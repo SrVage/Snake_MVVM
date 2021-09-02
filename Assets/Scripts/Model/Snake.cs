@@ -27,12 +27,19 @@ namespace DefaultNamespace
             }
         }
 
+        public Tail AddTail()
+        {
+            Vector2 temp = SnakeStructure[SnakeStructure.Count-1].Position;
+            var tail = new Tail(new Vector2(temp.x, temp.y), temp);
+            SnakeStructure.Add(tail);
+            return tail;
+        }
+
         public void Move()
         {
             Vector2 temp = new Vector2(0, 0);
             foreach (var Tail in SnakeStructure)
             {
-                Debug.Log(Tail.Position.x+" "+Tail.Position.y);
                 if (Tail is Head head)
                 {
                     switch (head.Direction)
